@@ -71,6 +71,10 @@ module.exports = function (config) {
   }, config || {});
   var output = path.resolve(process.cwd(), config.output || 'video.mp4');
   var ffmpegArgs;
+  var image_format = 'png';
+  if (config.image_format) {
+    image_format = config.image_format;
+  }
   var inputOptions = config.inputOptions || [];
   var outputOptions = config.outputOptions || [];
   var frameDirectory = config.tempDir || config.frameDir;
@@ -88,7 +92,7 @@ module.exports = function (config) {
       frameDirectory = path.join(config.frameCache, frameDirectory);
     }
     frameDirectory = path.resolve(path.parse(output).dir, frameDirectory);
-    outputPattern = path.resolve(frameDirectory, 'image-%09d.png');
+    outputPattern = path.resolve(frameDirectory, 'image-%09d.'+image_format);
   } else {
     outputPattern = '';
   }
