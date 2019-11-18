@@ -68,7 +68,7 @@ module.exports = function (config) {
     roundToEvenHeight: true,
     url: 'index.html',
     pixFmt: 'yuv420p',
-    imageFormat: 'png'
+    imageFormat: 'jpg'
   }, config || {});
   var output = path.resolve(process.cwd(), config.output || 'video.mp4');
   var ffmpegArgs;
